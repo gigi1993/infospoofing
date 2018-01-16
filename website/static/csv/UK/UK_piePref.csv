@@ -1,0 +1,7 @@
+country,litres,color
+"Compliant IPv4",471,"#4ac959"
+"Compliant IPv6",42,"#31823a"
+"Inconsistent IPv4",417,"#ffd54c"
+"Inconsistent IPv6",6,"#efb239"
+"Spoofing IPv4",21,"#e85c3a"
+"Spoofing IPv6",4,"#af3d21"

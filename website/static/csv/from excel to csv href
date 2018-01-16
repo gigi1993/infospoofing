@@ -1,0 +1,1 @@
+= CHAR(34) & "<a href=" & CHAR(34) & CHAR(34) & "https://spoofer.caida.org/recent_tests.php?as_include=" & H2 & CHAR(34) & CHAR(34) & " target=" &CHAR(34) &CHAR(34) & "_blank" &CHAR(34) &CHAR(34) & " style=" &CHAR(34) &CHAR(34) & "color:159124;" &CHAR(34) &CHAR(34) & ">" & H2 &"</a>" &CHAR(34)

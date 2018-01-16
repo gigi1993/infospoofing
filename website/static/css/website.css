@@ -1,0 +1,151 @@
+.header {
+    background-color: #159124;  
+    width: 100%;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+    border: 1px solid #159124;
+}
+.header h1, .header h1 a, .header h1 a:visited, .header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+    text-align: center;
+}
+h1, h2, h3, h4 {
+    color: #159124;
+    font-family: 'Open Sans', sans-serif;
+}
+.content {
+    margin: 50;
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+    font-size:14px;
+}
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+/*----- Menu Outline -----*/
+.menu-wrap {
+    width:100%;
+    background:#333;
+    /*----- 
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;-----*/
+}
+.menu {
+    width:110%; /* BOOOOH */
+}
+.menu li {
+    margin:0px;
+    list-style:none;
+}
+.menu a {
+    transition:all linear 0.15s;
+    color:#ffffff;
+}
+ 
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#31823a;  /*----- green -----*/
+}
+ 
+.menu .arrow {
+    font-size:10px;
+    line-height:0%;
+}
+ 
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:left;
+    display:inline-block;
+    position:relative;
+    font-size:18px;
+}
+ 
+.menu > ul > li > a {
+    padding:10px 30px;
+    display:inline-block;
+}
+ 
+.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+    background:#262626;  /*----- darkgrey -----*/
+}
+ 
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+ 
+.sub-menu {
+    width:100%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    background:#333; /*----- darkgrey -----*/
+}
+ 
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+ 
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
+ 
+.sub-menu li a:hover, .sub-menu .current-item a {
+    background:#262626; /*----- darkgrey shit-----*/
+}
+
+#external {
+  position: relative;
+  margin-left: 20px;
+}
+
+
+.amcharts-chart-div a {display:none !important;}
+
+.footer {
+    background-color: #333;
+    margin-top: 100;
+}
+.footer p{
+    color: #2EA93D;
+}
+.footer h1, .footer h1 a, .footer h1 a:visited, .footer h1 a:active {
+    color: #2EA93D;
+    font-size: 36pt;
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.footer li {
+    float: left;
+}
+
+.footer li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.footer li a:hover {
+    color: #2EA93D;
+}

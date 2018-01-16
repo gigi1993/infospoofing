@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>InfoSpoofing</title>
+        <!-- links and scripts for the graphs -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <div class = "header">
+            <h1>InfoSpoofing</h1>        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+    </head>
+    <body>
+        </div>
+        <!-- NAVIGATION BAR -->
+        <div class="menu-wrap">
+            <nav class="menu">
+                <ul class="clearfix">
+                    <li ><a href="http://127.0.0.1:8000">Home</a></li>
+                    <li class="current-item" >
+                        <a href="#">Countries <span class="arrow">&#9660;</span></a>
+         
+                        <ul class="sub-menu">
+                            <li><a href="http://127.0.0.1:8000/UK">United Kingdom</a></li>
+                            <li class="current-item"><a href="http://127.0.0.1:8000/DE">Germany</a></li>
+                            <li><a href="#">Country 3</a></li>
+                            <li><a href="#">Country 4</a></li>
+                            <li><a href="#">Country 5</a></li>
+                            <li><a href="#">Country 6</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="alert alert-info alert-dismissable" align="center">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            Your current Autonomous System Number is: <strong>{{current_ASN}}</strong>. Check if it is in the table below, and help us by taking the test!
+            <input type="button" value="More on the test" onclick="window.location.href='http://127.0.0.1:8000/about#SpooferProject'" />
+        </div>
+        <!-- CONTENT-->
+        <div class="content"> 
+            <h1 align="center" style="margin-top: -15px;">Germany</h1>
+            <h3 align="center" style="margin-top: -5px;">Only 6 ASes present evidence of IP spoofing: is yours one of these?</h3>
+            <p>In Germany there are 60 tested Autonomous Systems, for a total of 992 IP addresses. Only 6 ASes present evidence of IP spoofing. Details on these ASes are shown here below.</p>  
+            <h4 align="center" style="margin-top: 20px;">Help us in the fight against IP spoofing!</h4>
+            <p><b>If you are an ISP:</b> check if you implement anti-spoofing. If you do, help us by sharing this page with non-compliant ISPs!<br><b>If you are an user:</b> have you considered <a href="http://127.0.0.1:8000/about#SpooferProject" target="_blank" style="color: 159124;">taking the test</a>? It takes less than 5 minutes and your results would improve cybersecurity!</p>
+            <br>
+        </div>
+        <div class="content" style="margin-right: 50px; margin-left: 70px; margin-top: -40px;">
+            <iframe src="http://127.0.0.1:8000/DE_pie" width=100% height=32% frameborder="0"></iframe>
+            <iframe src="http://127.0.0.1:8000/DE_AS" width=100% height=50% frameborder="0"></iframe>
+            <p>Look up your AS, and check if your ISP correctly deploys anti-spoofing! If your AS is not listed here, it might be that we have not tested it yet (or you are in another country). In any case, help us measuring the Internet, <a href="http://127.0.0.1:8000/about#SpooferProject" target="_blank" style="color: 159124;">take the test</a>! Collecting enough measurements is critical to fight IP spoofing!</p>
+            <iframe src="http://127.0.0.1:8000/DE_table" width=100% height=45% frameborder="0"></iframe>
+        </div>
+
+        <div class = "footer">
+            <br>
+            <div>
+                <ul>
+                    <li style="margin-left: 25px; margin-top: 25px;"><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/UK">UK</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/DE">DE</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C3</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C4</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C5</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C6</a></li>
+                    <li style="margin-top: 25px;"><a href="mailto:infospoofing.contact@gmail.com">infospoofing.contact@gmail.com</a></li>
+                    <li style="float:right; margin-right: 50px;"> <a href="#"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="150" height="75"></a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

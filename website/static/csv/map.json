@@ -1,0 +1,20 @@
+{
+    "map": "worldLow",
+    
+    "areas": [
+    {
+    "id": "GB",
+    "value": 0,
+    "color": "#00570B",
+    "title": "United Kingdom",
+    "description": "<b>Tested ASes: 93</b><br><b>9</b> present evidence of spoofing (45 are unspoofable and 39 are inconsistent)<br><br><b>Tested IP prefixes:</b> 959 <br><b>25</b> present evidence of spoofing (511 are unspoofable and 423 are inconsistent)"
+    },
+    {
+    "id": "DE",
+    "value": 0,
+    "color": "#00570B",
+    "title": "Germany",
+    "description": "<b>Tested ASes: 60</b><br><b>6</b> present evidence of spoofing (39 are unspoofable and 14 are inconsistent)<br><br><b>Tested IP prefixes:</b> 992 <br><b>9</b> present evidence of spoofing (748 are unspoofable and 234 are inconsistent)"
+    }
+    ]
+}

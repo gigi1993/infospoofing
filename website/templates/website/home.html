@@ -1,0 +1,395 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>InfoSpoofing</title>
+        <!-- links and scripts for the graphs -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  
+        <link rel="stylesheet" href="{% static 'ammap/ammap.css' %}" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="{% static 'ammap/ammap.js' %}" type="text/javascript"></script>
+        <!-- map file should be included after ammap.js -->
+        <script src="{% static 'ammap/maps/js/worldLow.js' %}" type="text/javascript"></script>
+        <script src="{% static 'ammap/themes/light.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/amcharts.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/pie.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/serial.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/plugins/dataloader/dataloader.min.js' %}" type="text/javascript"></script>
+<!-- MAP SCRIPT -->
+
+        <script>
+            AmCharts.theme = AmCharts.themes.light;
+            var map;
+            AmCharts.ready(function() {
+                map = new AmCharts.AmMap();
+                map.colorSteps = 0;
+                //load data map ONLY JSON WORKS
+                map.dataLoader = {
+                    url: "{% static 'csv/map.json' %}",
+                       // format: "csv",
+                       // delimiter: ",",
+                       // useColumnNames: true,
+                };
+                map.areasSettings = {
+                    autoZoom: true,
+                    descriptionWindowTop: 10,
+                    descriptionWindowRight: 10,
+                    rollOverColor:"#2EA93D",
+                };
+                map.legend = {
+                    width: "100%",
+                    marginRight: 27,
+                    marginLeft: 27,
+                    equalWidths: false,
+                    backgroundAlpha: 0.5,
+                    backgroundColor: "#FFFFFF",
+                    borderColor: "#ffffff",
+                    borderAlpha: 1,
+                    top: 302,
+                    left: 0,
+                    horizontalGap: 10,
+                    data:[{
+                        "title": "Data available",
+                        "color": "#33773D"
+                    },{
+                        "title": "Data not available",
+                        "color": "#929393"
+                    }]
+                };
+                map.projection = "Equirectangular";
+                map.mouseWheelZoomEnabled= false;
+                map.backgroundZoomsToTop= false;
+                //when click on a country, show information
+                map.listeners = [ {
+                    "event": "clickMapObject",
+                    "method": function( event ) {
+                        // WITH LOCAL URL
+                        
+                        if (event.mapObject.title=="United Kingdom"){
+                            // load link to UK page in description A
+                            document.getElementById("descriptionA").innerHTML = '<a href="http://127.0.0.1:8000/UK" style="color: 159124;">VISIT UK PAGE</a>';
+                            // load AS graph in description B
+                            document.getElementById("descriptionB").innerHTML = '<iframe src="http://127.0.0.1:8000/UK_pie" width=100% height=32% frameborder="0"></iframe>';
+                            // load table in description C
+                            document.getElementById("descriptionC").innerHTML = '<iframe src="http://127.0.0.1:8000/UK_AS" width=100% height=50% frameborder="0"></iframe>';   
+                        } else if (event.mapObject.title=="Germany"){
+                            // load link to UK page in description A
+                            document.getElementById("descriptionA").innerHTML = '<a href="http://127.0.0.1:8000/DE" style="color: 159124;">VISIT DE PAGE</a>';
+                            document.getElementById("descriptionB").innerHTML = '<iframe src="http://127.0.0.1:8000/DE_pie" width=100% height=32% frameborder="0"></iframe>';
+                            document.getElementById("descriptionC").innerHTML = '<iframe src="http://127.0.0.1:8000/DE_AS" width=100% height=50% frameborder="0"></iframe>';
+                        }     
+                        
+                        // URL for pythonanywhere 
+                        
+                        // if (event.mapObject.title=="United Kingdom"){
+                        //     // load AS graph in description C
+                        //     document.getElementById("descriptionC").innerHTML = '<iframe src="http://gg93.pythonanywhere.com/details_AS_UK" width=100% height=50% frameborder="0"</iframe>';
+                        //     // load table in description B
+                        //     document.getElementById("descriptionB").innerHTML = '<iframe src="http://gg93.pythonanywhere.com/details_TAB_UK" width=100% height=50% frameborder="0"</iframe>';   
+                        // } else if (event.mapObject.title=="Germany"){
+                        //     document.getElementById("descriptionC").innerHTML = '<iframe src="http://gg93.pythonanywhere.com/details_AS_DE" width=100% height=50% frameborder="0"</iframe>';
+                        //     document.getElementById("descriptionB").innerHTML = '<iframe src="http://gg93.pythonanywhere.com/details_TAB_DE" width=100% height=50% frameborder="0"</iframe>';
+                        // }
+                        // Until here   
+                    }
+                } ],
+                map.write("mapdiv"); 
+            });
+        </script>
+<!-- COLUMN SCRIPT AS-->
+        <script type="text/javascript">
+            var chart;
+            AmCharts.ready(function () {
+                chart = new AmCharts.AmSerialChart();
+                //chart.dataProvider = chartData;
+                // Load external CSV
+                chart.dataLoader = {
+                    url: "{% static 'csv/contrycompareAS.csv' %}",
+                    format: "csv",
+                    delimiter: ",",
+                    useColumnNames: true,
+                };
+                chart.categoryField = "country";
+                chart.plotAreaBorderAlpha = 0.2;
+                // AXES
+                // category
+                var categoryAxis = chart.categoryAxis;
+                categoryAxis.gridAlpha = 0.1;
+                categoryAxis.axisAlpha = 0;
+                categoryAxis.gridPosition = "start";
+                // value
+                var valueAxis = new AmCharts.ValueAxis();
+                valueAxis.stackType = "regular";
+                valueAxis.gridAlpha = 0.1;
+                valueAxis.axisAlpha = 0;
+                chart.addValueAxis(valueAxis);
+                // GRAPHS
+                // COMPLIANT AS V4
+                var graph = new AmCharts.AmGraph();
+                graph.title = "UnSpoofable ASes IPv4";
+                graph.labelText = "[[value]]";
+                graph.valueField = "compliantAS";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#4ac959"; 
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'><b>[[value]] compliant ASes</b></span>";
+                chart.addGraph(graph);
+
+                // Inconsistent AS
+                graph = new AmCharts.AmGraph();
+                graph.title = "Inconsistent ASes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "inconsistentAS";
+                graph.type = "column";
+                graph.newStack = true; // this line starts new stack
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#ffd54c";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'><b>[[value]] inconsistent ASes</b></span>";
+                chart.addGraph(graph);
+
+                // SPOOFABLE AS
+                graph = new AmCharts.AmGraph();
+                graph.title = "Spoofable ASes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "spoofableAS";
+                graph.type = "column";
+                graph.newStack = true; // this line starts new stack
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#e85c3a";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'><b>[[value]] spoofable ASes</b></span>";
+                chart.addGraph(graph);
+
+                // LEGEND
+                var legend = new AmCharts.AmLegend();
+                legend.borderAlpha = 0.2;
+                legend.horizontalGap = 10;
+                chart.addLegend(legend);
+                // WRITE
+                chart.write("clusteredbarAS");
+            });
+        </script>
+<!-- COLUMN SCRIPT IP-->
+        <script type="text/javascript">
+            var chart;
+            AmCharts.ready(function () {
+                chart = new AmCharts.AmSerialChart();
+                //chart.dataProvider = chartData;
+                // Load external CSV
+                chart.dataLoader = {
+                    url: "{% static 'csv/contrycompare.csv' %}",
+                    format: "csv",
+                    delimiter: ",",
+                    useColumnNames: true,
+                };
+                chart.categoryField = "country";
+                chart.plotAreaBorderAlpha = 0.2;
+                // AXES
+                // category
+                var categoryAxis = chart.categoryAxis;
+                categoryAxis.gridAlpha = 0.1;
+                categoryAxis.axisAlpha = 0;
+                categoryAxis.gridPosition = "start";
+                // value
+                var valueAxis = new AmCharts.ValueAxis();
+                valueAxis.stackType = "regular";
+                valueAxis.gridAlpha = 0.1;
+                valueAxis.axisAlpha = 0;
+                chart.addValueAxis(valueAxis);
+                // GRAPHS
+
+                // COMPLIANT IPv4
+                var graph = new AmCharts.AmGraph();
+                graph.title = "UnSpoofable IPv4 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "compliantv4";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#4ac959";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+                // COMPLIANT IPv6
+                var graph = new AmCharts.AmGraph();
+                graph.title = "UnSpoofable IPv6 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "compliantv6";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#31823a";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+                // Inconsistent v4
+                graph = new AmCharts.AmGraph();
+                graph.title = "Inconsistent IPv4 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "inconsistentv4";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#ffd54c";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+                // Inconsistent v6
+                graph = new AmCharts.AmGraph();
+                graph.title = "Inconsistent IPv6 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "inconsistentv6";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#efb239";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+                // SPOOFABLE IPv4
+                graph = new AmCharts.AmGraph();
+                graph.title = "Spoofable IPv4 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "spoofablev4";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#e85c3a";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+                // SPOOFABLE IPv6
+                graph = new AmCharts.AmGraph();
+                graph.title = "Spoofable IPv6 prefixes";
+                graph.labelText = "[[value]]";
+                graph.valueField = "spoofablev6";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#af3d21";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span>";
+                chart.addGraph(graph);
+
+
+                // LEGEND
+                var legend = new AmCharts.AmLegend();
+                legend.borderAlpha = 0.2;
+                legend.horizontalGap = 10;
+                chart.addLegend(legend);
+                // WRITE
+                chart.write("clusteredbar");
+            });
+        </script>
+        <script>
+            function myShowHide() {
+                var x = document.getElementById("metrics");
+                var y = document.getElementById("message");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                    y.style.display = "none";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+        <script>
+            function myShowMessage() {
+                var x = document.getElementById("message");
+                var y = document.getElementById("metrics");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                    y.style.display = "none";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class = "header">
+            <h1>InfoSpoofing</h1>
+        </div>
+        <!-- NAVIGATION BAR -->
+                <div class="menu-wrap">
+            <nav class="menu">
+                <ul class="clearfix">
+                    <li class="current-item"><a href="http://127.0.0.1:8000">Home</a></li>
+                    <li>
+                        <a href="#">Countries <span class="arrow">&#9660;</span></a>
+                        <ul class="sub-menu">
+                            <li><a href="http://127.0.0.1:8000/UK">United Kingdom</a></li>
+                            <li><a href="http://127.0.0.1:8000/DE">Germany 2</a></li>
+                            <li><a href="#">Country 3</a></li>
+                            <li><a href="#">Country 4</a></li>
+                            <li><a href="#">Country 5</a></li>
+                            <li><a href="#">Country 6</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+<!-- CONTENT-->
+        <div class="content"> 
+            <h1 align="center" style="margin-top: -15px;">IP spoofing is still a thing!</h1>
+                <button onclick="myShowMessage()">IP Spoofing</button><button onclick="myShowHide()">Metrics</button>
+                <p id="metrics" style="font-size: 14px; background-color: #F2F3F4; padding:20 30; margin-top: -10px; border:solid 1px; border-color: #B7B7B7; border-radius: 10px; display: none;"> 
+                <b>/24 IP version4 and /40 IP version6 Prefixes:</b><br> <b style="color: green;">UNSPOOFABLE:</b> an IP prefix for which the majority of the tests does not present evidence of IP spoofing (including a minority of INCONSISTENT test).<br><b style="color: orange;">INCONSISTENT:</b> an IP prefix for which the majority of the tests is unknown or the original IP address has ben rewritten by Network Address Translation (NAT).<br><b style="color: red;">SPOOFABLE:</b> an IP prefix for which at least one test has presented evidence of IP Spoofing.<br><br>
+                <b>Autonomous Systems (ASes)</b><br>
+                <b style="color: green;">UNSPOOFABLE:</b> an AS for which the majority of the IP prefixes tested is UNSPOOFABLE (including a minority of INCONSISTENT IP prefixes).<br><b style="color: orange;">INCONSISTENT:</b> an AS for which the majority of the IP prefixes is INCONSISTENT.<br><b style="color: red;">SPOOFABLE:</b> an AS for which at least one IP prefix has presented evidence of IP spoofing.</p>
+                <p id="message" style="font-size: 14px; background-color: #F2F3F4; padding:20 30; margin-top: -10px; border:solid 1px; border-color: #B7B7B7; border-radius: 10px;">
+
+                    <i>IP source address spoofing</i> is the practice of creating Internet packets with a fake source address, in order to mask the sender identity or to impersonate another computer system. It is mainly used by criminals to launch massive reflection and amplification DDoS attacks (over 400 Gbps), which are also unfeasible to track due to the use of a fake source address. To prevent attacks based on IP spoofing, Internet Service Providers should implement Source Address Validation according to <a href="https://tools.ietf.org/html/bcp38" target="_blank" style="color: 159124;">BCP38</a> or <a href="https://tools.ietf.org/html/bcp84" target="_blank" style="color: 159124;">BCP84</a>, Best Common Practices to drop spoofed packets.<br><br>Unfortunately, information on the deployment of BCP38/84 is very difficult to retrieve. For this reason, researchers of CAIDA have launched the <a href="https://www.caida.org/projects/spoofer/" target="_blank" style="color: 159124;">Spoofer Project</a>, providing a test application that measures compliance with BCP38 of the network on which it runs. We have used crowdsourcing platforms for recruiting volunteers in six countries to run the test, and we share our results on this page. <br> In total, there are measurements from more than <b>N</b> single IP addresses (anonymised here to the relative /24 prefix). The measurements cover over <b>N</b> Autonomous Systems (groups of IP addresses under a single administrative entity) worldwide.<br><br>Given the difficulties in measuring compliance with BCP38, and given the little information available, we believe that sharing our results on deployment of BCP38 might be beneficial for the Internet community.
+                </p>
+            <div align="center">
+                <br><p>Scroll down to see some general statistics. Click on the map to display country-level information. Check out more details on the country page.</p>
+                <div id="mapdiv" style=" width: 90%; height: 50%; background-color:#f2f3f4; border:solid 1px; border-color: #B7B7B7; border-radius: 10px;"></div>
+            </div>
+        </div>
+        <!--CONTAIN THE DETAILS AFTER CLICK ON MAP-->
+        <div id=external style="border:dotted 0px; border-color: black; margin-top:-50px; margin-right: 50px;">
+            <div id="descriptionA" align="center" style=" margin-right: 50px; margin-left: 70px;">
+            </div>
+            <div id="descriptionB" align="center" style=" margin-right: 50px; margin-left: 70px; border:dotted 0px; border-color: blue;">
+            </div>
+            <div id="descriptionC" align="center" style=" margin-right: 50px; margin-left: 75px; border:dotted 0px; border-color: red;">
+            </div>
+        </div>
+<!--CLUSTER COLUMN AS-->
+        <div align="center">
+            <br>
+            <h4>Worldwide results grouped by AS</h4>
+            <!--CLUSTER COLUMN AS -->
+            <div id="clusteredbarAS" style=" width:80%; height:40%;"></div>
+        </div>
+<!--CLUSTER COLUMN IP-->
+        <div align="center" >
+            <br>
+            <h4>Worldwide results grouped by IP address</h4>
+            <!--CLUSTER COLUMN  -->
+            <div id="clusteredbar" style=" width:80%; height:50%;"></div>
+        </div>
+<!--FOOTER-->        
+        <div class = "footer">
+            <br>
+            <div>
+                <ul>
+                    <li style="margin-left: 25px; margin-top: 25px;"><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/UK">UK</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/DE">DE</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C3</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C4</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C5</a></li>
+                    <li style="margin-top: 25px;"><a href="#">C6</a></li>
+                    <li style="margin-top: 25px;"><a href="mailto:infospoofing.contact@gmail.com">infospoofing.contact@gmail.com</a></li>
+                    <li style="float:right; margin-right: 50px;"> <a href="#"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="150" height="75"></a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
