@@ -1,5 +1,5 @@
 .header {
-    background-color: #159124;  
+    background-color: #159124;
     width: 100%;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
@@ -29,7 +29,7 @@ h1, h2, h3, h4 {
 .menu-wrap {
     width:100%;
     background:#333;
-    /*----- 
+    /*-----
     position: -webkit-sticky;
     position: sticky;
     top: 0;-----*/
@@ -45,17 +45,17 @@ h1, h2, h3, h4 {
     transition:all linear 0.15s;
     color:#ffffff;
 }
- 
+
 .menu li:hover > a, .menu .current-item > a {
     text-decoration:none;
     color:#31823a;  /*----- green -----*/
 }
- 
+
 .menu .arrow {
     font-size:10px;
     line-height:0%;
 }
- 
+
 /*----- Top Level -----*/
 .menu > ul > li {
     float:left;
@@ -63,22 +63,22 @@ h1, h2, h3, h4 {
     position:relative;
     font-size:18px;
 }
- 
+
 .menu > ul > li > a {
     padding:10px 30px;
     display:inline-block;
 }
- 
+
 .menu > ul > li:hover > a, .menu > ul > .current-item > a {
     background:#262626;  /*----- darkgrey -----*/
 }
- 
+
 /*----- Bottom Level -----*/
 .menu li:hover .sub-menu {
     z-index:1;
     opacity:1;
 }
- 
+
 .sub-menu {
     width:100%;
     padding:5px 0px;
@@ -90,17 +90,17 @@ h1, h2, h3, h4 {
     transition:opacity linear 0.15s;
     background:#333; /*----- darkgrey -----*/
 }
- 
+
 .sub-menu li {
     display:block;
     font-size:16px;
 }
- 
+
 .sub-menu li a {
     padding:10px 30px;
     display:block;
 }
- 
+
 .sub-menu li a:hover, .sub-menu .current-item a {
     background:#262626; /*----- darkgrey shit-----*/
 }
@@ -111,7 +111,7 @@ h1, h2, h3, h4 {
 }
 
 
-.amcharts-chart-div a {display:none !important;}
+/*.amcharts-chart-div a {display:none !important;}*/
 
 .footer {
     background-color: #333;

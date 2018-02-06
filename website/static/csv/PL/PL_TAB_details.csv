@@ -1,0 +1,5 @@
+ASN,UnSpoofable IP,NAT-Blocking IP,Spoof IP
+"<a href=""https://spoofer.caida.org/recent_tests.php?as_include=50017"" target=""_blank"" style=""color:159124;"">50017</a>",0,1,0
+"<a href=""https://spoofer.caida.org/recent_tests.php?as_include=12222 "" target=""_blank"" style=""color:159124;"">12222 (AKAMAI)</a>",1,0,0
+"<a href=""https://spoofer.caida.org/recent_tests.php?as_include=12337 "" target=""_blank"" style=""color:159124;"">12337 (NORIS-NETWORK)</a>",2,0,0
+"<a href=""https://spoofer.caida.org/recent_tests.php?as_include=12502 "" target=""_blank"" style=""color:f7602a;"">12502 (NEPUSTILNET-AS01)</a>",0,0,2

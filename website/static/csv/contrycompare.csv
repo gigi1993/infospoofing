@@ -1,3 +1,7 @@
-country,compliantv4,compliantv6,inconsistentv4,inconsistentv6,spoofablev4,spoofablev6
-UK,469,42,417,6,21,4
-Germany,687,61,232,2,5,4
+country,compliant,nat,spoofable,mixed
+Australia,
+Germany,1736,330,15,6
+Italy,
+Netherlands,
+Poland,
+United Kingdom,1225,613,53,10

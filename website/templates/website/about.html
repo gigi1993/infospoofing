@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/website.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
         <div class = "header">
@@ -18,42 +18,42 @@
                     <li><a href="http://127.0.0.1:8000">Home</a></li>
                     <li>
                         <a href="#">Countries <span class="arrow">&#9660;</span></a>
-         
+
                         <ul class="sub-menu">
-                            <li><a href="http://127.0.0.1:8000/UK">United Kingdom</a></li>
-                            <li><a href="#">Country 2</a></li>
-                            <li><a href="#">Country 3</a></li>
-                            <li><a href="#">Country 4</a></li>
-                            <li><a href="#">Country 5</a></li>
-                            <li><a href="#">Country 6</a></li>
+                            <li><a href="http://127.0.0.1:8000/au">Australia</a></li>
+                            <li><a href="http://127.0.0.1:8000/de">Germany</a></li>
+                            <li><a href="http://127.0.0.1:8000/it">Italy</a></li>
+                            <li><a href="http://127.0.0.1:8000/nl">Netherlands</a></li>
+                            <li><a href="http://127.0.0.1:8000/pl">Poland</a></li>
+                            <li><a href="http://127.0.0.1:8000/uk">United Kingdom</a></li>
                         </ul>
                     </li>
-                    <li class="current-item"><a href="#">About</a></li>
+                    <li><a href="http://127.0.0.1:8000/remediation">Remediation</a></li>
+                    <li class="current-item"><a href="http://127.0.0.1:8000/about">About</a></li>
                 </ul>
             </nav>
         </div>
-        
+
         <!-- CONTENT -->
         <div class = "content">
             <h1 align="center" style="margin-top: -15px;">Who Are We?</h1>
             <br>
             <p>
-                We are a group of researchers of the Delft University of Technology (<a href="https://www.tudelft.nl" style="color: 159124;" target="_blank">TU Delft</a>), and we created this webpage to report the extent to which Autonomous Systems implement anti-spoofing. IP Spoofing is a critical vulnerability in Internet architecture, often exploited by attackers to launch massive amplification and reflection DDoS attacks. To mitigate this threat, Internet Service Providers (ISPs) can implement BCP38, a best common practice known as Source Address Validation.
+                We are a group of researchers of the Delft University of Technology (<a href="https://www.tudelft.nl" style="color: 159124;" target="_blank">TU Delft</a>), and we created this webpage to report the extent to which Autonomous Systems implement anti-spoofing. IP Spoofing is a critical vulnerability in Internet architecture, often exploited by attackers to launch massive amplification and reflection DDoS attacks. To mitigate this threat, Internet Service Providers (ISPs) can implement <a href="http://127.0.0.1:8000/remediation"  style="color: 159124;">Source Address Validation</a> according to BCP38 and BCP84, best common practices to implement anti-spoofing filters.
                 <br>
-                On this page, we report the measurements of compliance with BCP38 obtained with crowdsourcing campaigns in six countries, using CAIDA's Spoofer tool (see below). Our aim is to spread our results, with the hope that this information might increase awareness about which ISPs correctly implement BCP38, and which instead allow IP spoofing on their network.
-                <br><br>
-                Interested to learn more on IP Spoofing? You can start watching <a href="https://www.youtube.com/watch?v=rxN4zWTNSds" target="_blank" style="color: 159124;">this video</a> by CAIDA or reading <a href="https://www.internetsociety.org/doc/addressing-challenge-ip-spoofing" target="_blank" style="color: 159124;">this publication</a> by the Internet Society.
+                On this page, we report the measurements of compliance with Source Address Validation obtained with crowdsourcing campaigns in six countries, using CAIDA's Spoofer tool (see below). Our aim is to spread our results, with the hope that this information might increase awareness about which ISPs correctly implement Source Address Validation, and which instead allow IP spoofing on their network.
+
             </p>
             <h1 id="SpooferProject" align="center">The Spoofer Project</h1>
             <br>
             <p>
-                Differently from other network proprieties, the compliance with BCP38 is extremely difficult to measure. So far, the most feasible way to test if a network is compliant is to try to send spoofed packets from that network, and evaluate if the operator properly filters its traffic. <br> To this aim, the Center for Applied Internet Data Analysis launched the <a href="https://www.caida.org/projects/spoofer/" target="_blank" style="color: 159124;">Spoofer Project</a>, providing volunteers with an application that tests the network on which it runs. The availability of information on the networks allowing IP Spoofing is crucial to mitigate the threat of DDoS attack, and the use of this application represents today the most reliable source.<h4 style="text-align: center; text-decoration: underline;" ><a href="https://www.caida.org/projects/spoofer/#software" target="_blank" style="color: 159124;">HELP US! Download the test application!</a></h4> Available for Windows, Mac and Linux systems, the application is very easy to install, and runs automatically without the need of special configurations. It takes less than 5 minutes, and it would help us in the fight against IP spoofing!</p>
+                Differently from other network proprieties, the compliance with Source Address Validation is extremely difficult to measure. So far, the most feasible way to test if a network is compliant is to try to send spoofed packets from that network, and evaluate if the operator properly filters its traffic. <br> To this aim, the Center for Applied Internet Data Analysis launched the <a href="https://www.caida.org/projects/spoofer/" target="_blank" style="color: 159124;">Spoofer Project</a>, providing volunteers with an application that tests the network on which it runs. The availability of information on the networks allowing IP Spoofing is crucial to mitigate the threat of DDoS attack, and the use of this application represents today the most reliable source.<h4 style="text-align: center; text-decoration: underline;" ><a href="https://www.caida.org/projects/spoofer/#software" target="_blank" style="color: 159124;">HELP US! Download the test application!</a></h4> Available for Windows, Mac and Linux systems, the application is very easy to install, and runs automatically without the need of special configurations. It takes less than 5 minutes, and it would help us in the fight against IP spoofing!</p>
             <h1 align="center">Contacts</h1>
             <br>
             <p align="center">
                TU Delft research group: <a href="https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/multi-actor-systems/sections/policy-organisation-law-gaming/research/economics-of-cybersecurity/" target="_blank" style="color: 159124;">Economics of Cybersecurity</a> <br>
-               Mail: <a href="mailto:infospoofing.contact@gmail.com" style="color: 159124;">infospoofing.contact@gmail.com</a>
-            </p>    
+               Mail: <a href="mailto:infospoofing@tudelft.nl" style="color: 159124;">infospoofing@tudelft.nl</a>
+            </p>
 
         </div>
         <div class = "footer">
@@ -61,13 +61,9 @@
             <div>
                 <ul>
                     <li style="margin-left: 25px; margin-top: 25px;"><a href="http://127.0.0.1:8000/">Home</a></li>
-                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/">UK</a></li>
-                    <li style="margin-top: 25px;"><a href="#">C2</a></li>
-                    <li style="margin-top: 25px;"><a href="#">C3</a></li>
-                    <li style="margin-top: 25px;"><a href="#">C4</a></li>
-                    <li style="margin-top: 25px;"><a href="#">C5</a></li>
-                    <li style="margin-top: 25px;"><a href="#">C6</a></li>
-                    <li style="margin-top: 25px;"><a href="mailto:infospoofing.contact@gmail.com">infospoofing.contact@gmail.com</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/remediation">Remediation</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/about">About</a></li>
+                    <li style="margin-top: 25px;"><a href="mailto:infospoofing@tudelft.nl">infospoofing@tudelft.nl</a></li>
                     <li style="float:right; margin-right: 50px;"> <a href="#"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="150" height="75"></a></li>
                 </ul>
             </div>

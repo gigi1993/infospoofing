@@ -1,20 +1,48 @@
 {
     "map": "worldLow",
-    
+
     "areas": [
     {
-    "id": "GB",
+    "id": "AU",
     "value": 0,
     "color": "#00570B",
-    "title": "United Kingdom",
-    "description": "<b>Tested ASes: 93</b><br><b>9</b> present evidence of spoofing (45 are unspoofable and 39 are inconsistent)<br><br><b>Tested IP prefixes:</b> 959 <br><b>25</b> present evidence of spoofing (511 are unspoofable and 423 are inconsistent)"
+    "title": "Australia",
+    "description": "<b>Tested ASes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)<br><br><b>Tested IP prefixes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)"
     },
     {
     "id": "DE",
     "value": 0,
     "color": "#00570B",
     "title": "Germany",
-    "description": "<b>Tested ASes: 60</b><br><b>6</b> present evidence of spoofing (39 are unspoofable and 14 are inconsistent)<br><br><b>Tested IP prefixes:</b> 992 <br><b>9</b> present evidence of spoofing (748 are unspoofable and 234 are inconsistent)"
+    "description": "<b>Tested ASes: 77</b><br><b>12</b> present evidence of spoofing<br>(39 are unspoofable and 6 are NAT-blocking)<br><br><b>Tested IP prefixes: 2087</b><br><b>21</b> present evidence of spoofing<br>(1736 are unspoofable and 330 are NAT-blocking)"
+    },
+    {
+    "id": "IT",
+    "value": 0,
+    "color": "#00570B",
+    "title": "Italy",
+    "description": "<b>Tested ASes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)<br><br><b>Tested IP prefixes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)"
+    },
+    {
+    "id": "NL",
+    "value": 0,
+    "color": "#00570B",
+    "title": "Netherlands",
+    "description": "<b>Tested ASes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)<br><br><b>Tested IP prefixes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)"
+    },
+    {
+    "id": "PL",
+    "value": 0,
+    "color": "#00570B",
+    "title": "Poland",
+    "description": "<b>Tested ASes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)<br><br><b>Tested IP prefixes: N</b><br><b>N</b> present evidence of spoofing<br>(N are unspoofable and N are NAT-blocking)"
+    },
+    {
+    "id": "GB",
+    "value": 0,
+    "color": "#00570B",
+    "title": "United Kingdom",
+    "description": "<b>Tested ASes: 111</b><br><b>23</b> present evidence of spoofing<br>(69 are unspoofable and 19 are NAT-blocking)<br><br><b>Tested IP prefixes: 1901</b><br><b>63</b> present evidence of spoofing<br>(1224 are unspoofable and 614 are NAT-blocking)"
     }
     ]
 }

@@ -1,0 +1,4 @@
+ASN,spoofable,IPSpoof,mixed,IPMixed
+NL,1,0.0.0.0,1,1.1.1.1
+NL,2,0.0.0.0<br>1.1.1.1.
+NL,0,,2,0.0.0.0<br>1,1.1.1.1

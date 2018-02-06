@@ -1,0 +1,90 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>InfoSpoofing</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script src="{% static 'amcharts/amcharts.js' %}" type="text/javascript"></script>
+
+        <!-- DELETE PIE -->
+        <script src="{% static 'amcharts/pie.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/serial.js' %}" type="text/javascript"></script>
+        <script src="{% static 'amcharts/plugins/dataloader/dataloader.min.js' %}" type="text/javascript"></script>
+<!-- COLUMN CHART-->
+        <script type="text/javascript">
+            var chart;
+            AmCharts.ready(function () {
+                chart = new AmCharts.AmSerialChart();
+                //chart.dataProvider = chartData;
+                chart.dataLoader = {
+                    url: "{% static 'csv/NL/NL_AS_details.csv' %}",
+                    format: "csv",
+                    delimiter: ",",
+                    useColumnNames: true,
+                };
+                chart.startDuration = 0;
+                //chart.sequencedAnimation = 1;
+                //chart.startEffect = "elastic";
+                chart.categoryField = "ASN";
+                chart.plotAreaBorderAlpha = 0.2;
+                // AXES
+                // category
+                var categoryAxis = chart.categoryAxis;
+                categoryAxis.gridAlpha = 0.1;
+                categoryAxis.axisAlpha = 0;
+                categoryAxis.gridPosition = "start";
+                categoryAxis.labelRotation= 20;
+                // value
+                var valueAxis = new AmCharts.ValueAxis();
+                valueAxis.stackType = "regular";
+                valueAxis.gridAlpha = 0.1;
+                valueAxis.axisAlpha = 0;
+                chart.addValueAxis(valueAxis);
+                // GRAPHS
+                // SPOOFABLE
+                var graph = new AmCharts.AmGraph();
+                graph.title = "Spoofable";
+                graph.labelText = "[[value]]";
+                graph.valueField = "spoofable";
+                graph.valueFieldB = "IP";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#f7602a";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span><br><span style='font-size:12px'>[[IP]]</span>";
+                chart.addGraph(graph);
+                // MIX
+                graph = new AmCharts.AmGraph();
+                graph.title = "Mixed";
+                graph.labelText = "[[value]]";
+                graph.valueField = "mixed";
+                graph.valueFieldC = "IPMixed";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.7;
+                graph.lineColor = "#efca23";
+                graph.balloonText = "<span style='color:#555555;'>[[category]]</span><br><span style='font-size:14px'>[[title]]:<b>[[value]] IP prefixes</b></span><br><span style='font-size:12px'>[[IPMixed]]</span>";
+                chart.addGraph(graph);
+                // LEGEND
+                var legend = new AmCharts.AmLegend();
+                legend.borderAlpha = 0.2;
+                legend.horizontalGap = 10;
+                chart.addLegend(legend);
+               // WRITE
+                chart.write("clusteredbar2");
+            });
+        </script>
+
+
+
+      </head>
+    <body>
+        <div align="center"  style="border:solid 0px;">
+            <h3 align="center" style="margin-top: -0px; color: #e85c3a;">Only N ASes (N%) were found to be without anti-spoofing filtering: is yours one of these?</h3>
+            <div id="clusteredbar2" style="width:100%;height: 85%; margin-top: -20px;"></div>
+        </div>
+    </body>
+</html>

@@ -1,3 +1,7 @@
-country,compliantAS,inconsistentAS,spoofableAS
-United Kingdom,45,39,9
-Germany,39,14,6
+country,compliantAS,inconsistentAS,spoofableAS,mixedAS
+Australia,
+Germany,59,6,10,2
+Italy,
+Netherlands,
+Poland,
+United Kingdom,69,19,20,3

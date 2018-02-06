@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>InfoSpoofing</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    </head>
+    <body>
+        <div class = "header">
+            <h1>InfoSpoofing</h1>
+        </div>
+<!-- NAVIGATION BAR -->
+        <div class="menu-wrap">
+            <nav class="menu">
+                <ul class="clearfix">
+                    <li><a href="http://127.0.0.1:8000">Home</a></li>
+                    <li>
+                        <a href="#">Countries <span class="arrow">&#9660;</span></a>
+
+                        <ul class="sub-menu">
+                            <li><a href="http://127.0.0.1:8000/au">Australia</a></li>
+                            <li><a href="http://127.0.0.1:8000/de">Germany</a></li>
+                            <li><a href="http://127.0.0.1:8000/it">Italy</a></li>
+                            <li><a href="http://127.0.0.1:8000/nl">Netherlands</a></li>
+                            <li><a href="http://127.0.0.1:8000/pl">Poland</a></li>
+                            <li><a href="http://127.0.0.1:8000/uk">United Kingdom</a></li>
+                        </ul>
+                    </li>
+                    <li class="current-item"><a href="http://127.0.0.1:8000/remediation">Remediation</a></li>
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- CONTENT -->
+        <div class = "content">
+            <h1 align="center" style="margin-top: -15px;">Source Address Validation</h1>
+            <br>
+            <p>
+                To prevent IP source address spoofing, network operators should do Source Address Validation. Source Address Validation refers to the practice of filtering packets with a non-verified source address by implementing <a href="https://en.wikipedia.org/wiki/Ingress_filtering" target="_blank" style="color: 159124;">ingress filtering</a> according to <a href="https://tools.ietf.org/html/bcp38" target="_blank" style="color: 159124;">BCP38</a> or <a href="https://tools.ietf.org/html/bcp84" target="_blank" style="color: 159124;">BCP84</a>, Best Common Practices to drop spoofed packets.<br>
+               <br>BCP38 (RFC2827) is the original document by the Internet Engineering Task Force. It describes a simple, effective, and
+               straightforward method for using ingress traffic filtering to
+               prohibit DoS attacks which use forged IP addresses to be propagated
+               from 'behind' an Internet Service Provider's aggregation point.
+               <br>However, there are cases when ingress filtering described in BCP38 may create problems, e.g., with multihoming. BCP84 (RFC3704) updates BCP38, and describes
+               the current ingress filtering operational mechanisms, examines
+               generic issues related to ingress filtering, and delves into the
+               effects on multihoming in particular.
+               <br><br>
+                Interested to learn more on IP Spoofing and on Source Address Validation? You can start watching <a href="https://www.youtube.com/watch?v=rxN4zWTNSds" target="_blank" style="color: 159124;">this short video</a> by CAIDA or reading some publications:
+                <ul>
+                  <li><a href="https://www.internetsociety.org/doc/addressing-challenge-ip-spoofing" target="_blank" style="color: 159124;">Addressing the challenge of IP spoofing</a>: whitepaper by the Internet Society;</li>
+                  <li><a href="https://www.ripe.net/publications/docs/ripe-432/" target="_blank" style="color: 159124;">Network Hygiene Pays Off</a>: business case on IP spoofing;</li>
+                  <li><a href="https://www.internetsociety.org/deploy360/anti-spoofing/" target="_blank" style="color: 159124;">Anti-spoofing</a>: Internet Society's page dedicated to anti-spoofing (with additional useful resources);</li>
+                  <li><a href="https://www.caida.org/projects/spoofer/" target="_blank" style="color: 159124;">CAIDA's Spoofer Project</a>: projects aimed to measure Internet’s susceptibility to spoofed source address IP packets;</li>
+                  <li><a href="https://www.manrs.org/manrs/" target="_blank" style="color: 159124;">Mutually Agreed Norms for Routing Security</a>: community-led initiative that aims to improve the security and resilience of the global routing system;</li>
+                  <li><a href="https://www.ripe.net/publications/docs/ripe-431/" target="_blank" style="color: 159124;">RIPE Anti-Spoofing Task Force HOW-TO</a>: practical recommendations for the implementation of anti-spoofing (including examples of configurations);</li>
+                </ul>
+            </p>
+            <h1 align="center">How to be removed from our list?</h1>
+            <h3 align="center">1) Contact us!</h3>
+            <p>Send us a mail to <a href="mailto:infospoofing@tudelft.nl" style="color: 159124;">infospoofing@tudelft.nl</a>
+            <br>When you communicate us your intention to implement anti-spoofing, we will change the status of your AS/IP from <b style="color: red;">Spoofable</b> to <b style="color: DodgerBlue;">Remediating</b> to show that you are taking remediating action! If in the next weeks we do not receive any spoofable test, the status will be updated to <b style="color: limegreen;">NAT-Blocking</b> or <b style="color: darkgreen ;">UnSpoofable</b>! </p>
+            <h3 align="center">2) Download and do the test!</h3>
+            <p><a href="https://www.caida.org/projects/spoofer/#software" target="_blank" style="color: 159124;">Download</a> and run the testing application on the prefixes that presented evidences of spoofing. In this way we will have confirmation that you have deployed anti-spoofing filters!</p>
+
+            <br>
+            <h1 align="center">Contacts</h1>
+            <br>
+            <p align="center">
+               TU Delft research group: <a href="https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/multi-actor-systems/sections/policy-organisation-law-gaming/research/economics-of-cybersecurity/" target="_blank" style="color: 159124;">Economics of Cybersecurity</a> <br>
+               Mail: <a href="mailto:infospoofing@tudelft.nl" style="color: 159124;">infospoofing@tudelft.nl</a>
+            </p>
+
+        </div>
+        <div class = "footer">
+            <br>
+            <div>
+                <ul>
+                    <li style="margin-left: 25px; margin-top: 25px;"><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/remediation">Remediation</a></li>
+                    <li style="margin-top: 25px;"><a href="http://127.0.0.1:8000/about">About</a></li>
+                    <li style="margin-top: 25px;"><a href="mailto:infospoofing@tudelft.nl">infospoofing@tudelft.nl</a></li>
+                    <li style="float:right; margin-right: 50px;"> <a href="#"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="150" height="75"></a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

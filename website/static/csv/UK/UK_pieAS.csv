@@ -1,4 +1,5 @@
 country,litres,color
-"Spoofable",9,"#e85c3a"
-"UnSpoofable",45,"#4ac959"
-"Inconsistent",39,"#ffd54c"
+"Spoofable",20,"#e85c3a"
+"UnSpoofable",69,"#31823a"
+"Nat-Blocking",19,"#4ac959"
+"Mixed",3,"#efca23"
